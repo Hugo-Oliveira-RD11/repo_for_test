@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"]="test";
+    ViewData["css"]="/css/cadastro.css";
+}
+<form class="formulario" method="post"> 
+    <p> Envie uma mensagem preenchendo o formulário abaixo</p>
+
+    <div class="field">
+        <label for="nome">Seu Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome*" required>
+    </div>
+
+    <div class="field">
+        <label for="email">Seu E-Mail:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu E-Mail*" required>
+    </div>        
+    <div class="field radiobox">
+        <span>De qual nivel voce é? </span>
+        <input type="radio" name="experiencia" value="estagiario" checked><label for="estagiario">estagiario</label>
+        <input type="radio" name="experiencia" value="junior"><label for="junior">junior</label>
+        <input type="radio" name="experiencia" value="pleno"><label for="pleno">plenp</label>
+        <input type="radio" name="experiencia" value="senior"><label for="senior">senior</label>
+    </div>
+    <div class="field">
+        <label for="Bio">bio:</label>
+        <textarea name="mensagem" id="bio" placeholder="diga mais sobre vc"></textarea>
+    </div>
+
+    <input class="enviar" type="submit" name="acao" value="Enviar">
+</form>

@@ -8,6 +8,9 @@ namespace test1.Controllers
         public IActionResult Cadastro(){
             return View();
         }
+        public IActionResult Test(){
+            return View();
+        }
 
     }
 }
