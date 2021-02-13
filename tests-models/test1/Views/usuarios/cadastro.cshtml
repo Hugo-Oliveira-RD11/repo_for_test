@@ -1,6 +1,6 @@
 @{
     ViewData["Title"]="cadastro";
-    ViewData["css"]="/css/Content/cadastro.css";
+    ViewData["css"]="/css/cadastro.css";
 }
 <form class="formulario" method="post"> 
     <p> Envie uma mensagem preenchendo o formulário abaixo</p>
@@ -16,15 +16,14 @@
     </div>        
     <div class="field radiobox">
         <span>De qual nivel voce é? </span>
-        <input type="radio" name="experiencia" value="estagiario" checked><label for="estagiario">estagiario</label>
-        <input type="radio" name="experiencia" value="junior"><label for="junior">junior</label>
-        <input type="radio" name="experiencia" value="pleno"><label for="pleno">pleno</label>
-        <input type="radio" name="experiencia" value="senior"><label for="senior">senior</label>
+        <input type="radio" name="experiencia" value="0" checked><label for="estagiario">estagiario</label>
+        <input type="radio" name="experiencia" value="1"><label for="junior">junior</label>
+        <input type="radio" name="experiencia" value="2"><label for="pleno">pleno</label>
+        <input type="radio" name="experiencia" value="3"><label for="senior">senior</label>
     </div>
     <div class="field">
         <label for="Bio">bio:</label>
         <textarea name="mensagem" id="bio" placeholder="diga mais sobre vc"></textarea>
     </div>
-
     <input class="enviar" type="submit" name="acao" value="Enviar">
 </form>

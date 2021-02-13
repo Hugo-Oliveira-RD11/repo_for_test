@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using test1.Models.Data;
+using test1.Models;
 
 namespace test1
 {
@@ -13,7 +16,18 @@ namespace test1
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var Host= CreateHostBuilder(args).Build();
+            using (var scope = Host.Services.CreateScope()){
+                var services=scope.ServiceProvider;
+                try{
+                    SeedData.Initialize(services);
+                }
+                catch(Exception ex){
+                    var logger=services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex,"An error occurred seeding the DB");
+                }
+            }
+            Host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
