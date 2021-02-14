@@ -3,12 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace test1.Models
 {
-    public class usuarios
+    public class Usuarios
     {
+        [Key]
         public int id{get;set;}
+        [Required]
         public string nome{get;set;}
+        [Required]
         public string email{get;set;}
+        [Required]
         public string senha{get;set;}
-        public enum nivel{estagiario=0,junior=1,senior=2,pleno=3}
     }
 }
