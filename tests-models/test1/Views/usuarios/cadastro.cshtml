@@ -1,0 +1,15 @@
+@page
+@model test1.Models.Usuarios
+
+@{
+    //ViewData["Title"]="cadastro";
+}
+@using (Html.BeginForm()){
+    @Html.TextBoxFor(m => m.nome, new { @class = "form-control", placeholder = "digite o seu nome serio!" })
+    @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "digite o seu nome serio!" })
+    @Html.TextBoxFor(m => m.senha, new { @class = "form-control", placeholder = "digite o seu nome serio!" })
+
+    <input type="submit" value="Salvar a informaçoes" class="btn btn-primary">
+
+}
+
