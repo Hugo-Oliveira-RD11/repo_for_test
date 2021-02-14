@@ -15,7 +15,7 @@ namespace test1.Models
                     return;
                 }
                 context.cadastro.AddRange(
-                    new usuarios{
+                    new Usuarios{
                         nome="hugo",
                         email="hugo.vaiseferrar@gmail.com",
                         senha="nadamesmo"

@@ -6,6 +6,8 @@ namespace test1.Models.Data
     public class ModelsContext:DbContext
     {
         public ModelsContext (DbContextOptions<ModelsContext> options):base(options){}
-        public DbSet<usuarios> cadastro {get;set;}
+    }
+    public class AcessoModels{
+        public DbSet<Usuarios> cadastro {get;set;}
     }
 }
