@@ -12,5 +12,6 @@ namespace MvcMovie.Controllers
             ViewData["NumTimes"]=numtimes;
             return View();
         }
+
     }
 }
