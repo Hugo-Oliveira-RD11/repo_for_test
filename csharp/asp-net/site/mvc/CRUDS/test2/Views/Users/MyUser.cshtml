@@ -1,0 +1,28 @@
+@model test2.Models.CreateUser
+@{
+    ViewData["Title"]="MyUser";
+}
+
+<h1>MyUser</h1>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeR) :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomeR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeU) :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomeU)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email) :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>

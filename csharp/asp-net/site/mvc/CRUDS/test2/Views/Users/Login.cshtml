@@ -1,0 +1,38 @@
+@model test2.Models.CreateUser
+@{
+    ViewData["Title"]="Login";
+}
+
+<div class="col-md-4">
+    <form asp-action="Login">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="NomeR" class="control-label"></label>
+            <input asp-for="NomeR" class="form-control">
+            <span asp-validation-for="NomeR" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NomeU" class="control-label"></label>
+            <input asp-for="NomeU" class="form-control">
+            <span asp-validation-for="NomeU" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="senha" class="control-label"></label>
+            <input asp-for="senha" class="form-control">
+            <span asp-validation-for="senha" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-primary">
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
