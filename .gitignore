@@ -351,3 +351,6 @@ MigrationBackup/
 
 # tirando as minha configuraçoes do vscode
 .vscode/
+# tirando arquivos de lixo do sqlite(se n for lixo desculpa!)
+app.db-shm
+app.db-wal
