@@ -34,6 +34,13 @@ namespace Id.Overview.Mvc
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+            services.Configure<IdentityOptions>(options => {
+                options.Lockout.AllowedForNewUsers=true;
+                options.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromMinutes(10);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+            });
+            
             services.AddControllersWithViews();
         }
 
