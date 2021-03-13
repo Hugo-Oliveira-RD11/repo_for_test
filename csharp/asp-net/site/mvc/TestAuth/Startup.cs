@@ -33,6 +33,32 @@ namespace TestAuth
               .AddEntityFrameworkStores<ApplicationDataContext>()
               .AddDefaultTokenProviders();
             
+            services.Configure<IdentityOptions>(options => {
+                //password
+                options.Password.RequireDigit=true;
+                options.Password.RequiredLength=8;
+                options.Password.RequireLowercase=true;
+                options.Password.RequireUppercase=true;
+                options.Password.RequireNonAlphanumeric=false;
+                options.Password.RequiredUniqueChars=4;                
+
+
+                //lockout
+                options.Lockout.AllowedForNewUsers=true;
+                options.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromMinutes(2);
+                options.Lockout.MaxFailedAccessAttempts=5;
+
+
+            });
+
+            services.ConfigureApplicationCookie(options => {
+                options.Cookie.HttpOnly=true;
+                options.ExpireTimeSpan=TimeSpan.FromMinutes(10);
+                options.LoginPath="Account/Login";
+                options.LogoutPath="Account/Logou";
+                options.AccessDeniedPath="Account/AccessDenied";
+                options.SlidingExpiration=true;
+            });
             services.AddControllersWithViews();
         }
 
