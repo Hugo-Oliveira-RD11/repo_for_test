@@ -54,9 +54,9 @@ namespace TestAuth
             services.ConfigureApplicationCookie(options => {
                 options.Cookie.HttpOnly=true;
                 options.ExpireTimeSpan=TimeSpan.FromMinutes(10);
-                options.LoginPath="Account/Login";
-                options.LogoutPath="Account/Logou";
-                options.AccessDeniedPath="Account/AccessDenied";
+                options.LoginPath="/Account/Register";
+                options.LogoutPath="/Account/Logout";
+                options.AccessDeniedPath="/Account/AccessDenied";
                 options.SlidingExpiration=true;
             });
             services.AddControllersWithViews();
