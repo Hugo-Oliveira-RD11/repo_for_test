@@ -62,9 +62,9 @@ namespace TestAuth.Controllers
             return View();
         }
 
-
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string ReturnUrl = null){
             
             if(ModelState.IsValid){
@@ -78,6 +78,16 @@ namespace TestAuth.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout(){
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
         private IActionResult RedirecttoLocal(string ReturnUrl = null){
             if(!string.IsNullOrEmpty(ReturnUrl)){
                 if(Url.IsLocalUrl(ReturnUrl)){
