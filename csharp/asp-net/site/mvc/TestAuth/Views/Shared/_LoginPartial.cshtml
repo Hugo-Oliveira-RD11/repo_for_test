@@ -2,11 +2,16 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @if(SignInManager.IsSignedIn(User)){
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a href="#" class="nav-link text-dark">@UserManager.GetUserName(User)</a>
-        </li>
-    </ul>
+    <form method="POST" asp-area="" asp-controller="Account" asp-action="Logout" id="LogoutForm" class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#" class="nav-link text-dark">@UserManager.GetUserName(User)</a>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-default navbar-btn navbar-link">Sair</button>
+            </li>
+        </ul>
+    </form>
 }
 else{
 <ul class="nav navbar-nav navbar-right">
