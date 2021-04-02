@@ -1,0 +1,39 @@
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Perfil";
+}
+<h4>@ViewData["Title"]</h4>
+
+@Html.Partial("_StatusMessege", Model.StatusMessege)
+
+<div class="row">
+    <div class="col-md-4">
+        <form  method="post">
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input  asp-for="Username" class="form-control" disabled>
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control">
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control">
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
