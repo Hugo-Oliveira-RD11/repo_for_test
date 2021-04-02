@@ -36,11 +36,40 @@ namespace Id.Overview.Mvc
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             
             services.Configure<IdentityOptions>(options => {
+
                 options.Lockout.AllowedForNewUsers=true;
                 options.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromMinutes(10);
                 options.Lockout.MaxFailedAccessAttempts = 5;
+
+                
+                //e obrigado a digitar um numero de 0 a 9
+                options.Password.RequireDigit=true;
+                //e obrigado a senha ter no minimo 4 de tamanho
+                options.Password.RequiredLength=4;
+                //requere que vc diferencie a sua senha, tipo ppa2014, p se repete duas vezes, mas se a senha for assim aaaaa...
+                options.Password.RequiredUniqueChars = 1;
+                // e obrigado a ter uma letra minuscula na senha!
+                options.Password.RequireLowercase=true;
+                //requere que vc tenha uma letra maiuscula!
+                options.Password.RequireUppercase=true;
+                //e obrigado a ter um caracter diferente na senha(tipo *&¨%$##@!;°~~~^`{º{[.]}})
+                options.Password.RequireNonAlphanumeric=true;
+
+                //sigin
+                //essa propriedade define que para entrar no site tem que ter o email confirmado
+                options.SignIn.RequireConfirmedEmail=false;
+                //essa define que tem quer ter o um numero de celular confirmado
+                options.SignIn.RequireConfirmedPhoneNumber=false;
+                //eu ainda n sei oque esse metodo faz...
+                options.SignIn.RequireConfirmedAccount=false;
+
+                //define quais caracteres pode estar no nome do usuario!
+                options.User.AllowedUserNameCharacters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_@+:)";
+                //define se cada usuario precisao de um email, que n tenha em outro usuario!
+                options.User.RequireUniqueEmail=false;
             });
-            
+            services.ConfigureApplicationCookie(options => {
+            });
             services.AddControllersWithViews();
         }
 
