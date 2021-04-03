@@ -47,9 +47,9 @@ namespace Forum1
             });
             services.ConfigureApplicationCookie(options => {
                 options.Cookie.HttpOnly = true;
-                options.LoginPath = "Conta/Entrar";
-                options.LogoutPath = "Conta/Sair";
-                options.AccessDeniedPath = "Conta/Entrar";
+                options.LoginPath = "/Conta/Registrar";
+                options.LogoutPath = "/Conta/Sair";
+                options.AccessDeniedPath = "/Conta/Registrar";
                 options.ExpireTimeSpan = TimeSpan.FromHours(2);
                 options.SlidingExpiration = true;
                 options.Cookie.Name= "LoginUserCookie";
