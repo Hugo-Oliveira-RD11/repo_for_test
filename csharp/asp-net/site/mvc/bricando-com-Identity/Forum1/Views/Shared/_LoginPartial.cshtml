@@ -1,0 +1,14 @@
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@if(SignInManager.IsSignedIn(User)){
+    <li>
+        <a class="nav-link text-dark" href="#">@UserManager.GetUserName(User)</a>
+    </li>
+}else{
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        <a asp-area="" asp-controller="Conta" asp-action="Registrar">Registre-se</a>
+    </li>
+
+</ul>
+}
