@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Forum1.Models;
 using Forum1.Models.ContaViewModel;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,11 @@ namespace Forum1.Controllers
 
         [AllowAnonymous]
         public IActionResult Registrar(string ReturnUrl = null){
-
-           ViewData["ReturnUrl"] = ReturnUrl;
-           return View(); 
+            if(_signInManager.IsSignedIn(User)){
+                return RedirectToAction("Index","Home");
+            }
+            ViewData["ReturnUrl"] = ReturnUrl;
+            return View(); 
 
         }
 
@@ -38,7 +41,7 @@ namespace Forum1.Controllers
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if(result.Succeeded){
-                    ViewData["ReturnlUrl"] =  ReturnUrl;
+                    ViewData["ReturnUrl"] =  ReturnUrl;
 
                     var result2 = await _signInManager.PasswordSignInAsync(model.UserName,model.Password,model.Remenberme,lockoutOnFailure:false);
 
@@ -60,9 +63,52 @@ namespace Forum1.Controllers
                 }
 
             }
-            
+            Console.WriteLine("fudeu!");
             return View(model);
         }
+
+        public async Task<IActionResult> Login(string ReturnUrl = null){
+
+            if(_signInManager.IsSignedIn(User)){
+                return RedirectToAction("Index","Home");
+            }
+
+            ViewData["ReturnUrl"] = ReturnUrl;
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme); 
+            return View();
+
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model,string ReturnUrl = null){
+            if(ModelState.IsValid){
+               ViewData["ReturnUrl"] = ReturnUrl;
+
+               var result3 = await _signInManager.PasswordSignInAsync(model.UserName,model.Password,model.Remenberme,lockoutOnFailure:false);
+               
+               if(result3.Succeeded)
+               {
+                   return ReturnToLocalUrl(ReturnUrl);
+               }  
+            }
+            else{
+                ModelState.AddModelError(string.Empty,"tentativa de login invalida");
+            }
+            
+            Console.WriteLine("fudeu!");
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout(){
+
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index","Home");
+        }
+
 
         private IActionResult ReturnToLocalUrl(string ReturnUrl)
         {
