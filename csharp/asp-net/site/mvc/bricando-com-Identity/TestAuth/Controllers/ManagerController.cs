@@ -62,6 +62,44 @@ namespace TestAuth.Controllers
             StatusMessage = "Seu perfil foi atualizado!";
             return RedirectToAction("Index","Home");
         }
+        public async Task<IActionResult> ChangePassword(){
+            var user = await _userManager.GetUserAsync(User);
+            if(user == null){
+                throw new ApplicationException($"Não foi possivel carregar os dados do usuario{_userManager.GetUserId(User)}");
+            }
+            var model= new ChangePassWordViewModel{StatusMessage = StatusMessage};
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePassWordViewModel model)
+        {
+            if(!ModelState.IsValid){
+                return View(model);
+            }
+            
+            var user = await _userManager.GetUserAsync(User);
+            
+            if(user == null){
+                throw new ApplicationException($"Não foi possivel carregar os dados do usuario{_userManager.GetUserId(User)}");
+            }
+            
+            var changePasswordResult = await _userManager.ChangePasswordAsync(user,model.OldPassword,model.NewPassword);
+            
+            if(!changePasswordResult.Succeeded){
+                foreach(var error in changePasswordResult.Errors){
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                
+                return View(model);
+            }
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
+
+            StatusMessage = "Sua senha foi alterada com sucesso!";
+
+            return RedirectToAction(nameof(ChangePassword));
+        }
     }
     
 }

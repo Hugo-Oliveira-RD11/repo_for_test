@@ -1,0 +1,51 @@
+@model RegistrarViewModel
+@{
+    ViewData["Title"] = "Entrar";
+    var returnUrl = ViewData["ReturnUrl"];
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@returnUrl" method="POST">
+            <h4>Crie sua Conta!</h4>
+            <hr>
+            <div class="text-danger" asp-validation-summary="All">
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <input asp-for="UserName" class="form-control">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" class="form-control">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Remenberme">
+                        <input asp-for="Remenberme" class="form-control">
+                        @Html.DisplayNameFor(x=>x.Remenberme)
+                    </label>
+
+                </div>
+
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
