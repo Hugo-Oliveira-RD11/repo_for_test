@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using TesteApi1.Models.Data;
 
 namespace TesteApi1
 {
@@ -28,6 +30,8 @@ namespace TesteApi1
         {
 
             services.AddControllers();
+            services.AddDbContext<DataContext>(options => options.UseInMemoryDatabase("meu banquinho"));
+            services.AddScoped<DataContext, DataContext>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TesteApi1", Version = "v1" });
