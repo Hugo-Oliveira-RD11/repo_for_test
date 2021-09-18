@@ -354,3 +354,6 @@ MigrationBackup/
 # tirando arquivos de lixo do sqlite(se n for lixo desculpa!)
 app.db-shm
 app.db-wal
+
+*appsettings.json
+*appsettings.Development.json
