@@ -31,6 +31,10 @@ namespace Server.Models.Users
         [Required]
         [DisplayFormat(DataFormatString = "yyyy/mm/dd")]
         public DateTime LastModified { get; set; }
+        
+        [Required]
+        public string? Role { get; set; }
+        
         public List<Post>? Post { get; set; }
     }
 }
