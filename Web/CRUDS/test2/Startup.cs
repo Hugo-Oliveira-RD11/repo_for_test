@@ -26,7 +26,7 @@ namespace test2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<Test2Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Test2Context")));
+            services.AddDbContext<Test2Context>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
