@@ -1,0 +1,36 @@
+* Atenção
+
+se voce tentar rodar qual quer um desses projetos, todos iram falhar, pois falta algumas variaveis de ambiente.
+
+para resolver isso voce tem que criar dois arquivo, appsettings.json e o appsettings.Development.json
+
+#+NAME: appsettings.json
+#+BEGIN_SRC json
+ 
+ {
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "SqlServer":"Aqui vai a sua conexao para o Banco de Dados"
+  }
+ }
+#+END_SRC
+
+#+NAME: appsettings.Development.json
+#+BEGIN_SRC json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}
+
+
+#+END_SRC
