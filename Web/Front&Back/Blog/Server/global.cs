@@ -1,0 +1,10 @@
+global using System.Collections.Generic;
+global using System.ComponentModel.DataAnnotations;
+global using Server.Models.Posts;
+global using Server.Models.Users;
+global using Server.Models;
+global using Microsoft.EntityFrameworkCore;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
