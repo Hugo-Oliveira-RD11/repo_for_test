@@ -34,7 +34,5 @@ namespace Server.Models.Users
         
         [Required]
         public string? Role { get; set; }
-        
-        public List<Post>? Post { get; set; }
     }
 }

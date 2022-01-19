@@ -22,6 +22,5 @@ namespace Server.Models.Posts
         [DisplayFormat(DataFormatString = "yyyy/mm/dd")]
         public DateTime LastModification { get; set; }
         public int UserId { get; set; }
-        public User? User { get; set; }
     }
 }
