@@ -30,7 +30,20 @@ builder.Services.AddAuthorization(op =>
     op.AddPolicy("Manager_Posts", policy => policy.RequireRole("MPosts"));
     op.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
 });
+
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
 
