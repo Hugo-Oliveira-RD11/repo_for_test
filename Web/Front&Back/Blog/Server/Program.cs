@@ -60,6 +60,9 @@ app.UseAuthorization();
 app.MapGet("/AllPosts", async (Context db) => 
     await db.Posts.AsNoTracking().ToListAsync()).AllowAnonymous();
 
+app.MapGet("/AllPostsOfUser/{user}",async (Context db,int user) =>
+    await db.Posts.Where(u => u.UserId == user).AsNoTracking().ToListAsync()).AllowAnonymous();
+
 app.MapGet("/AllPosts/{tag}", async (string tag,Context db) =>
     await db.Posts.Where(t => t.Tag.ToLower().Contains(tag)).AsNoTracking().ToListAsync()).AllowAnonymous();
 
