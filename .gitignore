@@ -358,3 +358,22 @@ app.db-wal
 *appsettings.json
 *appsettings.Development.json
 Annotations/
+
+# misc
+/.angular/cache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# profiling files
+chrome-profiler-events*.json
