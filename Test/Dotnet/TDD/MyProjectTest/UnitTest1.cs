@@ -19,4 +19,19 @@ public class UnitTest1
         //assert
         Assert.True(resultado);
     }
+
+    [Fact]
+    public void TestvalidaCpf_ReturnFalse()
+    {
+        //arrange
+        var cpf = "";
+        var expected = false;
+        var Validacpf = new Cpf();
+
+        //act 
+        var resultado = Validacpf.ValidaCpf(cpf);
+
+        //assert
+        Assert.Equal(expected, resultado);
+    }
 }
