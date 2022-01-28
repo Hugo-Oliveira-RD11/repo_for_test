@@ -1,0 +1,30 @@
+header{
+    display: block;
+    background-color: aqua;
+    height: 76px;
+}
+header .logoImg{
+    max-height: 82px;
+    margin-right: 40px;
+    background-color: bisque;
+}
+
+header .imgSeach{
+    max-width: 30px;
+    max-height: 30px;
+    top: 30px;
+    
+}
+header .Seach{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header .box_Seach{
+    height: 35px;
+    width: 315px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-right: 5px;
+}
