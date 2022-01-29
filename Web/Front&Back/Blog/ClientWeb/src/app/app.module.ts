@@ -6,15 +6,20 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { FooterComponent } from './component/footer/footer.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { AllusersComponent } from './views/users/allusers/allusers.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    AllusersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
