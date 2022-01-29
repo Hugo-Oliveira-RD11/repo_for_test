@@ -1,0 +1,20 @@
+.content{
+    display: flex;
+    position: absolute;
+    top: 189px;
+    margin-left: 25px;
+    border: 1px solid black;
+}
+
+.table{
+    display: block;
+    margin: auto;
+
+}
+
+button {
+    position: absolute;
+    top: 215;
+    background-color: blue;
+}
+

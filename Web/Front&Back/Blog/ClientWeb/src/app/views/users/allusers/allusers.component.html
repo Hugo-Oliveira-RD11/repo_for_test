@@ -1,0 +1,20 @@
+<div class="content">
+    <table class="table">
+        <tr class="headerUsers">
+            <th scope="col">Primeiro nome |</th>
+            <th scope="col">Ultimo nome |</th>
+            <th scope="col">Email |</th>
+            <th scope="col">Role</th>
+        </tr>
+        <tr *ngFor="let user of users" class="UsersData"> 
+            <td>{{user.FirstName}}</td>
+            <td>{{user.LastName}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.Role}}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+<button (click)="GetAllUser()">User</button>
