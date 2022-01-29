@@ -37,6 +37,12 @@ builder.Services.AddAuthorization(op =>
 });
 #endregion
 
+var MyAllowSpecificOrigins = "_Origins";
+builder.Services.AddCors(op => {
+    op.AddPolicy(name: MyAllowSpecificOrigins, builder => {
+        builder.WithOrigins("http://localhost:4200");
+    });
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -49,6 +55,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -139,7 +146,7 @@ app.MapGet("/AllUsers", async (Context db) => await db.Users.Select(blog => new 
         LastName = blog.LastName,
         Email = blog.Email,
         Role = blog.Role
-    }).AsNoTracking().ToListAsync()).RequireAuthorization();
+    }).AsNoTracking().ToListAsync());
 
 app.MapGet("/AllUsersFirst/{Name}", async (string Name,Context db) => 
     await db.Users.Where(t => t.FirstName == Name).Select(blog => new {
